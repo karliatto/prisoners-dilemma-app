@@ -21,7 +21,6 @@ If you would like to contribute to the project, the following should help get yo
 The following is a list of requirements needed to contribute to this project.
 
 * [nodejs](https://nodejs.org/) - For Linux and Mac install node via [nvm](https://github.com/creationix/nvm). For Windows, use an [installer](https://nodejs.org/en/download/) from the nodejs website.
-* [grunt-cli](https://gruntjs.com/getting-started) - `npm install -g grunt-cli`
 * [git](https://git-scm.com/)
 * A GitHub account to create pull requests
 
