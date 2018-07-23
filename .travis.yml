@@ -5,4 +5,6 @@ node_js:
 env:
   - CI=1
 
+before_install: npm install -g grunt-cli
+
 install: npm install

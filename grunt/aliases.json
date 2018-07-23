@@ -1,0 +1,15 @@
+{
+	"default": [
+		"test-server"
+	],
+	"test-server": [
+		"mochaTest:test-server-unit",
+		"mochaTest:test-server-integration"
+	],
+	"test-server:integration": [
+		"mochaTest:test-server-integration"
+	],
+	"test-server:unit": [
+		"mochaTest:test-server-unit"
+	]
+}
