@@ -21,22 +21,22 @@ const expectedDataExample = [
 
 const TournamentResults = () => {
   const sortedResults = expectedDataExample.sort((a, b) => b.score - a.score)
-
-  const rows = sortedResults.map((result, index) => (
-    <tr>
-      <td>{index + 1}</td>
+  const rows = sortedResults.map(result => (
+    <tr key={result.alias}>
       <td>{result.alias}</td>
       <td>{result.score}</td>
     </tr>
   ))
+
   return (
     <div>
-      <div>This is the tournament results page</div>
+      <h1>Tournament Results</h1>
       <table>
         <thead>
-          <th>#</th>
-          <th>Alias</th>
-          <th>Score</th>
+          <tr>
+            <th>Alias</th>
+            <th>Score</th>
+          </tr>
         </thead>
         <tbody>{rows}</tbody>
       </table>
