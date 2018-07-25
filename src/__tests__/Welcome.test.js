@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { MemoryRouter } from 'react-router-dom'
-import Home from '../routes/home'
+import Welcome from '../routes/welcome'
 
 /*
  * To test with <Link /> or <Route /> components,
@@ -13,7 +13,7 @@ it('renders without crashing', () => {
   const div = document.createElement('div')
   ReactDOM.render(
     <MemoryRouter>
-      <Home />
+      <Welcome />
     </MemoryRouter>,
     div
   )
