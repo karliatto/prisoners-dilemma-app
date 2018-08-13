@@ -8,17 +8,28 @@ export default class Welcome extends React.Component {
       data: {},
       done: false,
       error: null,
-      info: null,
+      info: null
     }
-    this.getInfo().then(function(info) {
-      this.setState({ info })
-    }.bind(this))
+    if (!process.env.CI) {
+      this.getInfo().then(info => {
+        this.setState({ info })
+      })
+    }
   }
 
   onChangeInput = e => {
     const { data } = this.state
     data[e.target.name] = e.target.value
     this.setState({ data })
+  }
+
+  getInfo = async () => {
+    const response = await fetch('http://localhost:3010/info', {
+      method: 'GET',
+      mode: 'cors',
+      credentials: 'include'
+    })
+    return response.json()
   }
 
   submit = async e => {
@@ -34,42 +45,27 @@ export default class Welcome extends React.Component {
       }
     })
     if (response.status >= 400) {
-      response.json().then(function(responseData) {
+      response.json().then(responseData => {
         this.setState({ error: responseData.error })
-      }.bind(this))
+      })
     } else {
       this.setState({ done: true })
     }
-  }
-
-  getInfo = async () => {
-    const response = await fetch('http://localhost:3010/info', {
-      method: 'GET',
-      mode: 'cors',
-      credentials: 'include'
-    })
-    return response.json()
   }
 
   render() {
     const { data, done, error, info } = this.state
 
     if (!info) {
-      return (
-        <p>Waiting for tournament info...</p>
-      )
+      return <p>Waiting for tournament info...</p>
     }
 
     if (info.alias || done) {
-      return (
-        <Redirect to='/waiting-to-start' />
-      )
+      return <Redirect to="/waiting-to-start" />
     }
 
     if (!info.alias && info.started) {
-      return (
-        <Redirect to='/tournament-results' />
-      )
+      return <Redirect to="/tournament-results" />
     }
 
     const { alias } = data
