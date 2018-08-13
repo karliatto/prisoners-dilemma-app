@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "async": "2.6.1",
+    "chai": "4.1.2",
+    "chai-http": "4.0.0",
     "cors": "2.8.4",
     "eslint": "5.1.0",
     "eslint-config-airbnb": "17.0.0",
@@ -13,19 +16,24 @@
     "eslint-plugin-react": "7.10.0",
     "express": "4.16.3",
     "express-session": "1.15.6",
+    "grunt": "1.0.3",
+    "grunt-mocha-test": "0.13.3",
+    "load-grunt-config": "0.19.2",
+    "mocha": "5.2.0",
     "prettier": "1.13.7",
     "primus": "7.2.2",
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-router-dom": "4.3.1",
     "react-scripts": "1.1.4",
+    "time-grunt": "1.4.0",
     "underscore": "1.9.1",
     "uws": "10.148.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom && eslint ./src",
+    "test": "react-scripts test --env=jsdom && grunt test-server && eslint ./src",
     "eject": "react-scripts eject",
     "lint": "eslint ./src --fix"
   }
