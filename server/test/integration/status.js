@@ -2,10 +2,10 @@ var _ = require('underscore');
 var chai = require('chai');
 var chaiHttp = require('chai-http');
 var expect = chai.expect;
-var manager = require('../../manager');
+var manager = require('../manager');
 
 var verb = 'get';
-var uri = '/api/v1/status';
+var uri = '/status';
 
 chai.use(chaiHttp);
 
