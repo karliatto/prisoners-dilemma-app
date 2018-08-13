@@ -1,5 +1,18 @@
 import React from 'react'
+import Server from '../server'
 
-const WaitingToStart = () => <div>The tournament will begin shortly...</div>
+export default class WaitingToStart extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+    if (!process.env.CI) {
+      Server.waitForServerStart(() => {
+        console.log('started!')
+      })
+    }
+  }
 
-export default WaitingToStart
+  render() {
+    return <div>The tournament will begin shortly...</div>
+  }
+}

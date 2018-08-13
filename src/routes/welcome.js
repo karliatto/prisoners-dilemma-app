@@ -1,5 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
+import Server from '../server'
 
 export default class Welcome extends React.Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class Welcome extends React.Component {
       info: null
     }
     if (!process.env.CI) {
-      this.getInfo().then(info => {
+      Server.getInfo().then(info => {
         this.setState({ info })
       })
     }
@@ -21,15 +22,6 @@ export default class Welcome extends React.Component {
     const { data } = this.state
     data[e.target.name] = e.target.value
     this.setState({ data })
-  }
-
-  getInfo = async () => {
-    const response = await fetch('http://localhost:3010/info', {
-      method: 'GET',
-      mode: 'cors',
-      credentials: 'include'
-    })
-    return response.json()
   }
 
   submit = async e => {
